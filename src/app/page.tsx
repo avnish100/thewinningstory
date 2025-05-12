@@ -1,103 +1,252 @@
-import Image from "next/image";
+'use client'
+import Link from "next/link"
+import Image from "next/image"
+import { Instagram, Youtube, ArrowRight } from "lucide-react"
+import { motion, AnimatePresence } from "motion/react"
+import React from "react"
+import { Button } from "@/components/ui/button"
+import { InstagramFeed } from '@/components/instagram-feed'
+import { YouTubeFeed } from '@/components/youtube-feed'
 
-export default function Home() {
+export default function HomePage() {
+  const [showOverlay, setShowOverlay] = React.useState(true);
+  const instagramUrl = `https://instagram.com/thewinningstory`;
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <AnimatePresence>
+        {showOverlay && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            onAnimationComplete={() => setShowOverlay(false)}
+            transition={{ duration: 1.2, ease: "easeInOut", delay: 1 }}
+            className="fixed inset-0 bg-[#2f4138] z-50 pointer-events-none flex items-center justify-center"
+          >
+            <div className="relative overflow-hidden">
+              <motion.div
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="absolute inset-0 bg-[#4f1717] z-10"
+              />
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                className="text-4xl font-light italic text-white"
+              >
+                The Winning Story
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                className="text-4xl font-light italic text-white"
+              >
+                There's no place like sports
+              </motion.p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div className="flex flex-col min-h-screen relative">
+        {/* Hero Section */}
+        <section className="w-full py-16 md:py-28 lg:py-36 xl:py-44 bg-[#4f1717] text-white">
+          <div className="container px-6 md:px-8">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <h1 className="article-title">
+                    Where Champions Are Made and Legends Are Written
+                  </h1>
+                  <p className="text-xl text-muted-foreground font-light max-w-[600px]">
+                    Discover the stories behind the victories, the struggles behind the triumphs, and the people behind
+                    the records.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
+                  <Link href="https://instagram.com/thewinningstory" target="_blank" rel="noopener noreferrer">
+                    <Button className="bg-primary hover:bg-primary/90 text-white">
+                      <Instagram className="mr-2 h-4 w-4" />
+                      Follow on Instagram
+                    </Button>
+                  </Link>
+                  <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                      <Youtube className="mr-2 h-4 w-4" />
+                      Subscribe on YouTube
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <Image
+                src="/placeholder.svg?height=800&width=600&text=Featured+Athlete"
+                width={600}
+                height={800}
+                alt="Featured Athlete"
+                className="mx-auto aspect-[3/4] overflow-hidden rounded-none object-cover object-center sm:w-full lg:order-last shadow-lg"
+              />
+            </div>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        {/* Featured Stories Section */}
+        <section className="w-full py-16 md:py-24 lg:py-32 bg-background">
+          <div className="container px-6 md:px-8">
+            <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+              <div className="space-y-2">
+                <h2 className="section-title !mb-0 !pb-0 !border-0">Featured Stories</h2>
+                <p className="text-muted-foreground text-lg font-light">The latest and greatest from The Winning Story.</p>
+              </div>
+              <Link href="#" className="flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+                View all stories
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid gap-10 pt-10 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "The Comeback: How Team Phoenix Rose From the Ashes",
+                  category: "Basketball",
+                  image: "/placeholder.svg?height=400&width=600&text=Basketball",
+                },
+                {
+                  title: "Breaking Barriers: The First Woman to Win the Ultra Marathon",
+                  category: "Running",
+                  image: "/placeholder.svg?height=400&width=600&text=Running",
+                },
+                {
+                  title: "Mind Games: The Psychology Behind Championship Teams",
+                  category: "Sports Psychology",
+                  image: "/placeholder.svg?height=400&width=600&text=Psychology",
+                },
+              ].map((story, i) => (
+                <Link key={i} href="#" className="group relative overflow-hidden rounded-lg bg-card shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="aspect-video overflow-hidden rounded-t-lg">
+                    <Image
+                      src={story.image || "/placeholder.svg"}
+                      alt={story.title}
+                      width={600}
+                      height={400}
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="text-sm font-medium uppercase tracking-wide text-[#4f1717]">{story.category}</div>
+                    <h3 className="mt-3 text-2xl font-medium">{story.title}</h3>
+                    <div className="mt-6 flex items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <Instagram className="h-5 w-5 text-[#4e334c]" />
+                        <span className="text-sm text-muted-foreground">View on Instagram</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Video Highlights Section */}
+        <section className="w-full py-16 md:py-24 lg:py-32 bg-[#4f1717]/10">
+          <div className="container px-6 md:px-8">
+            <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+              <div className="space-y-2">
+                <h2 className="section-title !mb-0 !pb-0 !border-0">Video Highlights</h2>
+                <p className="text-muted-foreground text-lg font-light">Watch our latest video content on YouTube.</p>
+              </div>
+              <Link
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+              >
+                Visit our YouTube channel
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid gap-6 pt-8">
+              <YouTubeFeed />
+            </div>
+          </div>
+        </section>
+
+        {/* Instagram Feed Section */}
+        <section className="w-full py-16 md:py-24 lg:py-32 bg-[#4e334c] text-white">
+          <div className="container px-6 md:px-8">
+            <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+              <div className="space-y-2">
+                <h2 className="section-title !mb-0 !pb-0 !border-0">Follow Us on Instagram</h2>
+                <p className="text-muted-foreground text-lg font-light">Get daily updates and behind-the-scenes content.</p>
+              </div>
+              <Link
+                href="https://instagram.com/thewinningstory"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-sm font-medium text-white hover:underline"
+              >
+                @thewinningstory
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-4 pt-8 md:grid-cols-4 lg:grid-cols-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <Link
+                  key={i}
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square overflow-hidden bg-card"
+                >
+                  <Image
+                    src={`/placeholder.svg?height=300&width=300&text=Insta+${i + 1}`}
+                    alt={`Instagram post ${i + 1}`}
+                    width={300}
+                    height={300}
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-primary/0 opacity-0 transition-all duration-300 group-hover:bg-primary/90 group-hover:opacity-100">
+                    <Instagram className="h-8 w-8 text-white" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-primary hover:bg-primary/90 text-white">
+                  <Instagram className="mr-2 h-4 w-4" />
+                  Follow on Instagram
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="w-full py-16 md:py-24 lg:py-32 bg-[#2f4138] relative min-h-[70vh] flex items-center">
+          <div className="container px-6 md:px-8">
+            <div className="mx-auto max-w-[600px] space-y-10 text-center">
+              <div className="space-y-6">
+                <h2 className="article-title !text-white">Join Our Community</h2>
+                <p className="article-subtitle !text-white/80">
+                  Subscribe to our newsletter for exclusive content and updates.
+                </p>
+              </div>
+              <form className="flex flex-col sm:flex-row gap-3">
+                <input
+                  className="flex-1 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm placeholder:text-white/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                  placeholder="Enter your email"
+                  type="email"
+                />
+                <Button variant="secondary" type="submit" className="rounded-lg bg-white text-[#2f4138] hover:bg-white/90 px-6">
+                  Subscribe
+                </Button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  )
 }
