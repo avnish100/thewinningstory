@@ -8,21 +8,21 @@ export default function About() {
     <div className="flex flex-col min-h-screen">
       <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+          <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">ABOUT US</h1>
-                <p className="max-w-[600px] text-primary-foreground/80 md:text-xl">
-                  The story behind The Winning Story.
+              <div className="space-y-3">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight">FOR THE LOVE OF SPORT</h1>
+                <p className="max-w-[600px] text-primary-foreground/80 text-base md:text-xl">
+                  We are The Winning Story - a multi-media platform highlighting Indian athletes, behind-the-scenes heroes, and those whose stories deserve to be told.
                 </p>
               </div>
             </div>
             <Image
-              src="/placeholder.svg?height=800&width=600"
+              src="/founder.jpg"
               width={600}
               height={800}
-              alt="Team Photo"
-              className="mx-auto aspect-[3/4] overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+              alt="Founder - Atharv Phadke"
+              className="mx-auto aspect-[3/4] overflow-hidden rounded-lg md:rounded-xl object-cover object-center sm:w-full lg:order-last"
             />
           </div>
         </div>
@@ -31,123 +31,63 @@ export default function About() {
       <section className="w-full py-12 md:py-24 bg-background">
         <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-3xl space-y-4">
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl text-center">OUR MISSION</h2>
-            <p className="text-muted-foreground md:text-lg text-center">
-              We believe in the power of sports to inspire, unite, and transform lives.
-              Our mission is to tell the untold stories of triumph, perseverance, and dedication
-              that make sports more than just a game.
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-center">OUR VISION</h2>
+            <p className="text-muted-foreground text-base md:text-lg text-center">
+              "A Home for Indian Athletes" - The Winning Story envisions a media space where Indian athletes can authentically share their journeys – their triumphs, struggles, and the emotions that drive them. Through compelling storytelling, we aim to amplify the voices and celebrate the achievements of all Indian athletes, regardless of mainstream attention.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      <section className="w-full py-12 md:py-24 lg:py-12">
         <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">OUR APPROACH</h2>
-              <p className="text-gray-500 md:text-xl">
-                We believe in immersive, authentic storytelling that captures the essence of athletic pursuit. Our
-                content spans written features, photojournalism, and documentary-style video production, all designed to
-                bring you closer to the athletes and teams you admire.
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">UNMATCHED COVERAGE</h2>
+              <p className="text-gray-500 text-base md:text-xl">
+                We go beyond the headlines, scores, stats, and medals to bring you exclusive and captivating insights into the world of Indian Athletes. Our interviews delve deep into the athletes' personal journeys, struggles, and unique perspectives.
               </p>
-              <p className="text-gray-500 md:text-xl">
-                The Winning Story maintains a strong presence on Instagram and YouTube, where we share exclusive
-                content, behind-the-scenes footage, and interactive experiences with our community of sports
-                enthusiasts.
+              <p className="text-gray-500 text-base md:text-xl">
+                We believe sports are more than wins and losses. We showcase the joy of victory, the agony of defeat, adversity and the unwavering spirit of human perseverance.
               </p>
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">OUR TEAM</h2>
-              <p className="text-gray-500 md:text-xl">
-                Our diverse team brings together experienced sports journalists, former athletes, award-winning
-                photographers, and innovative digital creators. United by our passion for sports and storytelling, we
-                work collaboratively to produce content that informs, inspires, and connects.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl text-center mb-12">MEET THE TEAM</h2>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-              {[
-                {
-                  name: "Jane Smith",
-                  role: "Editor-in-Chief",
-                  bio: "Former sports journalist with over 15 years of experience covering major sporting events worldwide.",
-                },
-                {
-                  name: "John Johnson",
-                  role: "Content Director",
-                  bio: "Award-winning documentary filmmaker specializing in sports narratives and athlete profiles.",
-                },
-                {
-                  name: "Sarah Williams",
-                  role: "Head of Digital",
-                  bio: "Digital strategy expert who has led social media campaigns for major sports brands and athletes.",
-                },
-                {
-                  name: "Michael Brown",
-                  role: "Lead Photographer",
-                  bio: "Internationally recognized sports photographer whose work has appeared in major publications.",
-                },
-                {
-                  name: "David Miller",
-                  role: "Senior Writer",
-                  bio: "Former athlete turned journalist with unique insights into the competitive mindset.",
-                },
-                {
-                  name: "Emily Davis",
-                  role: "Video Producer",
-                  bio: "Creative director specializing in short-form video content for digital platforms.",
-                },
-              ].map((member, i) => (
-                <div key={i} className="flex flex-col items-center text-center">
-                  <div className="mb-4">
-                    <Image
-                      src={`/placeholder.svg?height=300&width=300&text=Team+${i + 1}`}
-                      width={150}
-                      height={150}
-                      alt={member.name}
-                      className="rounded-full object-cover"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-sm font-medium text-gray-500">{member.role}</p>
-                  <p className="mt-2 text-sm text-gray-500">{member.bio}</p>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">THE FOUNDERS</h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold">Atharv Phadke</h3>
+                  <p className="text-gray-500 text-base">
+                    A former international swimmer who has experienced the highs and lows of competitive sport at the highest level. This unique perspective informs his work as a sports journalist with 3 years of experience in the field.
+                  </p>
                 </div>
-              ))}
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold">Shriya</h3>
+                  <p className="text-gray-500 text-base">
+                    A passionate sports enthusiast and digital media expert bringing innovative storytelling approaches to the platform. Her expertise in content strategy helps bridge the gap between athletes and their audiences.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full py-12 md:py-24 bg-secondary">
-        <div className="container">
+      <section className="w-full py-12 md:py-24 bg-background border-t border-t-muted-foreground">
+        <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-3xl space-y-8">
-            <h2 className="section-title text-center">OUR VALUES</h2>
-            <div className="grid gap-6 md:grid-cols-3">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-center">OUR PURPOSE</h2>
+            <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
-                <h3 className="article-subtitle">Authenticity</h3>
-                <p className="text-secondary-foreground/80">
-                  We tell real stories of real people with honesty and integrity.
+                <h3 className="text-xl font-medium">Build & Inspire</h3>
+                <p className="text-secondary-foreground/80 text-base">
+                  Build a recognizable & authentic Indian Sports Brand. Educate and inspire sports fans through compelling storytelling.
                 </p>
               </div>
               <div className="space-y-2">
-                <h3 className="article-subtitle">Excellence</h3>
-                <p className="text-secondary-foreground/80">
-                  We strive for excellence in every story we tell and every piece we create.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="article-subtitle">Impact</h3>
-                <p className="text-secondary-foreground/80">
-                  We aim to inspire and make a difference through our storytelling.
+                <h3 className="text-xl font-medium">Create & Foster</h3>
+                <p className="text-secondary-foreground/80 text-base">
+                  Create a safe space for Indian athletes while fostering a more diverse and inclusive community for Indian sports beyond cricket.
                 </p>
               </div>
             </div>
@@ -157,28 +97,28 @@ export default function About() {
 
       <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
         <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">CONNECT WITH US</h2>
-            <p className="mt-4 text-primary-foreground/80 md:text-xl">
-              Have a story idea or want to collaborate? We'd love to hear from you.
+          <div className="mx-auto max-w-3xl text-center space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">JOIN THE MOVEMENT</h2>
+            <p className="text-primary-foreground/80 text-base md:text-xl">
+              Be part of our journey to revolutionize Indian sports storytelling across Instagram, YouTube Shorts, podcasts, and more.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row">
-              <Link href="mailto:contact@thewinningstory.com">
-                <Button variant="secondary">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
+              <Link href="mailto:contact@thewinningstory.com" className="w-full sm:w-auto">
+                <Button variant="secondary" className="w-full">
                   <Mail className="mr-2 h-4 w-4" />
-                  Email Us
+                  Contact Us
                 </Button>
               </Link>
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary">
+              <Link href="https://instagram.com/thewinningstory" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button variant="secondary" className="w-full">
                   <Instagram className="mr-2 h-4 w-4" />
-                  Follow on Instagram
+                  @thewinningstory
                 </Button>
               </Link>
-              <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary">
+              <Link href="https://youtube.com/@TheWinningStory" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button variant="secondary" className="w-full">
                   <Youtube className="mr-2 h-4 w-4" />
-                  Subscribe on YouTube
+                  @TheWinningStory
                 </Button>
               </Link>
             </div>

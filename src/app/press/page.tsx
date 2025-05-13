@@ -28,9 +28,9 @@ export default async function PressRelease() {
   return (
     <div className="flex flex-col min-h-screen">
       <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
-        <div className="container space-y-4 text-center">
-          <h1 className="article-title">PRESS RELEASES</h1>
-          <p className="article-subtitle">
+        <div className="container px-4 md:px-6 space-y-4 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">PRESS RELEASES</h1>
+          <p className="text-base md:text-lg text-primary-foreground/80">
             Official announcements and news from The Winning Story
           </p>
         </div>
@@ -40,12 +40,12 @@ export default async function PressRelease() {
         <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-3xl space-y-12">
             {pressReleases.map((release: any) => (
-              <article key={release._id} className="space-y-6 border-b pb-12">
-                <div className="space-y-2">
-                  <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl article-title">
+              <article key={release._id} className="space-y-6 border-b pb-8 md:pb-12">
+                <div className="space-y-3">
+                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
                     {release.title}
                   </h1>
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>{new Date(release.date).toLocaleDateString()}</span>
@@ -65,10 +65,9 @@ export default async function PressRelease() {
                     className="aspect-video rounded-lg object-cover"
                   />
                 )}
-                <div className="space-y-4 text-gray-500">
+                <div className="space-y-4 text-gray-500 text-base">
                   {release.location} <PortableText value={release.content} />
                 </div>
-                {/* ... existing social buttons ... */}
               </article>
             ))}
           </div>
@@ -77,14 +76,14 @@ export default async function PressRelease() {
 
       <section className="w-full py-12 md:py-24">
         <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">MEDIA INQUIRIES</h2>
-            <p className="mt-4 text-gray-500">
+          <div className="mx-auto max-w-3xl text-center space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">MEDIA INQUIRIES</h2>
+            <p className="text-gray-500 text-base">
               For press inquiries, interview requests, or additional information, please contact our media relations
               team.
             </p>
-            <div className="mt-6">
-              <Button variant="secondary">Contact Press Team</Button>
+            <div>
+              <Button variant="secondary" className="w-full sm:w-auto">Contact Press Team</Button>
             </div>
           </div>
         </div>
@@ -92,23 +91,23 @@ export default async function PressRelease() {
 
       <section className="w-full py-12 md:py-24 bg-black text-white">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">FOLLOW OUR JOURNEY</h2>
-              <p className="max-w-[600px] text-gray-300 md:text-xl/relaxed">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <div className="space-y-3">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">FOLLOW OUR JOURNEY</h2>
+              <p className="text-gray-300 text-base md:text-xl">
                 Stay connected with The Winning Story on social media.
               </p>
             </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary" className="nav-link">
-                  <Instagram className="size-4" />
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button variant="secondary" className="w-full">
+                  <Instagram className="mr-2 h-4 w-4" />
                   Follow on Instagram
                 </Button>
               </Link>
-              <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary" className="nav-link">
-                  <Youtube className="size-4" />
+              <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button variant="secondary" className="w-full">
+                  <Youtube className="mr-2 h-4 w-4" />
                   Subscribe on YouTube
                 </Button>
               </Link>
