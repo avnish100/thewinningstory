@@ -30,23 +30,37 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos }: HomePa
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/flame.png"
             alt="The Winning Story"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-100 transition-opacity duration-700"
+            style={{
+              animation: 'fadeToLow 1.5s ease-out forwards'
+            }}
             priority
+            loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+          <div className="absolute inset-0"></div>
         </div>
 
         <div className="container mx-auto px-4 z-10 text-center">
-          <h1 className="font-serif text-6xl md:text-8xl font-bold text-black tracking-tight mb-6">
+          <h1 
+            className="font-serif text-6xl md:text-8xl font-bold text-black tracking-tight mb-6 opacity-0 transform translate-y-8 animate-[fadeSlideUp_0.8s_ease-out_forwards]"
+            style={{
+              animationDelay: '0.2s'
+            }}
+          >
             THE WINNING STORY
           </h1>
-          <p className="text-sm uppercase tracking-[0.3em] mb-8 text-gray-600">SPORTS • CULTURE • VICTORY</p>
+          <p 
+            className="text-sm uppercase tracking-[0.3em] mb-8 text-gray-900 opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]"
+            style={{ animationDelay: '0.6s' }}
+          >
+            SPORTS • CULTURE • VICTORY
+          </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
-            <Link href="#about" className="group">
+            <Link href="#about" className="group opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]" style={{ animationDelay: '0.8s' }}>
               <Button
                 variant="outline"
                 className="border-black text-black hover:bg-black hover:text-white rounded-none uppercase text-xs tracking-widest py-6 px-8 transition-all duration-300"
@@ -55,7 +69,7 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos }: HomePa
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link href="#social" className="group">
+            <Link href="#social" className="group opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]" style={{ animationDelay: '1s' }}>
               <Button className="bg-red-900 hover:bg-black text-white rounded-none uppercase text-xs tracking-widest py-6 px-8 transition-all duration-300">
                 Follow Us
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -125,226 +139,6 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos }: HomePa
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Photo Gallery */}
-      <section className="py-24 border-b border-black">
-        <div className="container mx-auto px-4">
-          <h2 className="font-serif text-4xl font-bold text-black mb-16 text-center">Behind The Scenes</h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
-            {galleryImages.map((item:any, index:any) => (
-              <div
-                key={item._id}
-                className={`group overflow-hidden relative ${index === 0 || index === 5 ? "md:col-span-2 md:row-span-2" : ""}`}
-              >
-                <div className="absolute inset-0 border border-black z-10 pointer-events-none"></div>
-                <div className="relative w-full h-full aspect-square">
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-700"
-                    placeholder="blur"
-                    blurDataURL={item.lqip}
-                  />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-sm">{item.caption}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/gallery" className="group">
-              <Button
-                variant="outline"
-                className="border-black text-black hover:bg-black hover:text-white rounded-none uppercase text-xs tracking-widest py-6 px-8"
-              >
-                View Full Gallery
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Press Releases Section */}
-      <section id="press" className="py-24 border-b border-black">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-black">Press Releases</h2>
-            <Link
-              href="/press"
-              className="text-xs uppercase tracking-widest font-medium text-red-900 hover:text-black flex items-center"
-            >
-              View All
-              <ChevronRight className="ml-1 h-4 w-4" />
-            </Link>
-          </div>
-
-          <PressReleases releases={pressReleases} />
-        </div>
-      </section>
-
-      {/* Animated Statistics */}
-      <section className="py-24 border-b border-black bg-black text-white">
-        <div className="container mx-auto px-4">
-          <h2 className="font-serif text-4xl font-bold mb-16 text-center">By The Numbers</h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
-                <StatisticCounter end={50} suffix="K+" duration={2} />
-              </p>
-              <p className="uppercase text-xs tracking-widest">Social Followers</p>
-            </div>
-
-            <div className="text-center">
-              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
-                <StatisticCounter end={100} suffix="+" duration={2} />
-              </p>
-              <p className="uppercase text-xs tracking-widest">Videos Created</p>
-            </div>
-
-            <div className="text-center">
-              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
-                <StatisticCounter end={25} suffix="+" duration={2} />
-              </p>
-              <p className="uppercase text-xs tracking-widest">Sports Covered</p>
-            </div>
-
-            <div className="text-center">
-              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
-                <StatisticCounter end={12} duration={2} />
-              </p>
-              <p className="uppercase text-xs tracking-widest">Team Members</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Showcase */}
-      <section className="py-24 border-b border-black">
-        <div className="container mx-auto px-4">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-black mb-16 text-center">
-            The Voices Behind Our Story
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                name: "Shriya Rajachandra",
-                role: "Founder",
-                bio: "A sports journalist with 4 years of experience in the industry, fueling a passion for all thingssports. A lifelong sports enthusiast with a keen eye forcompelling narratives and a knack for insightful analysis.",
-              },
-              {
-                name: "Atharv Phadke",
-                role: "Founder",
-                bio: "A former international swimmer who has experienced the highs and lows of competitive sport at the highest level. This unique perspective informs his work as of experience in the field.",
-              },
-            ].map((member, index) => (
-              <div key={index} className="group">
-                <div className="relative aspect-[3/4] border-2 border-black overflow-hidden mb-4">
-                  <Image
-                    src={`/placeholder.svg?height=600&width=450&text=Team Member ${index + 1}`}
-                    alt={`${member.name}`}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                </div>
-                <h3 className="font-serif text-2xl font-bold">{member.name}</h3>
-                <p className="text-red-900 uppercase text-xs tracking-widest mb-2">{member.role}</p>
-                <p className="text-gray-700">{member.bio}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button
-              variant="outline"
-              className="border-black text-black hover:bg-black hover:text-white rounded-none uppercase text-xs tracking-widest py-6 px-8"
-            >
-              Join Our Team
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Timeline */}
-      <section className="py-24 border-b border-black">
-        <div className="container mx-auto px-4">
-          <h2 className="font-serif text-4xl font-bold text-black mb-16 text-center">Our Journey</h2>
-
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-black"></div>
-
-            {[
-              {
-                year: 2023,
-                milestone: "First Instagram post reached 10,000 likes",
-                description: "Founded with a vision to transform sports media",
-              },
-              {
-                year: 2024,
-                milestone: "Surpassed 50,000 YouTube subscribers",
-                description: "Expanded our social media presence across platforms",
-              },
-              {
-                year: 2025,
-                milestone: "Preparing for our first major event coverage",
-                description: "Launching our comprehensive coverage of major sporting events",
-              },
-            ].map((item, index) => (
-              <div
-                key={item.year}
-                className={`flex items-center mb-16 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
-              >
-                <div className={`w-1/2 ${index % 2 === 0 ? "pr-12 text-right" : "pl-12"}`}>
-                  <h3 className="font-serif text-3xl font-bold mb-2">{item.year}</h3>
-                  <p className="text-gray-700">{item.description}</p>
-                </div>
-
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-900 rounded-full border-4 border-white"></div>
-
-                <div className={`w-1/2 ${index % 2 === 0 ? "pl-12" : "pr-12 text-right"}`}>
-                  <p className="text-sm uppercase tracking-widest text-red-900 mb-2">MILESTONE</p>
-                  <p className="font-medium">{item.milestone}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Carousel */}
-      <section className="py-24 border-b border-black">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="font-serif text-4xl font-bold text-black mb-16 text-center">What People Are Saying</h2>
-
-          <TestimonialCarousel
-            testimonials={[
-              {
-                quote:
-                  "The Winning Story brings a fresh perspective to sports coverage. Their visual storytelling is unmatched in the industry.",
-                author: "Sports Media Weekly",
-              },
-              {
-                quote:
-                  "A breath of fresh air in sports media. Their attention to detail and storytelling approach sets them apart from traditional outlets.",
-                author: "Digital Content Awards",
-              },
-              {
-                quote:
-                  "The team at The Winning Story has created something special. Their content captures the emotion and drama of sports in a way few others can.",
-                author: "Pro Athlete Magazine",
-              },
-            ]}
-          />
         </div>
       </section>
 
@@ -500,6 +294,228 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos }: HomePa
           </div>
         </div>
       </section>
+
+      {/* Press Releases Section */}
+      <section id="press" className="py-24 border-b border-black">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-black">Press Releases</h2>
+            <Link
+              href="/press"
+              className="text-xs uppercase tracking-widest font-medium text-red-900 hover:text-black flex items-center"
+            >
+              View All
+              <ChevronRight className="ml-1 h-4 w-4" />
+            </Link>
+          </div>
+
+          <PressReleases releases={pressReleases} />
+        </div>
+      </section>
+
+      {/* Team Showcase */}
+      <section className="py-24 border-b border-black">
+        <div className="container mx-auto px-4">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-black mb-16 text-center">
+            The Voices Behind Our Story
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                name: "Shriya Rajachandra",
+                role: "Founder",
+                bio: "A sports journalist with 4 years of experience in the industry, fueling a passion for all thingssports. A lifelong sports enthusiast with a keen eye forcompelling narratives and a knack for insightful analysis.",
+              },
+              {
+                name: "Atharv Phadke",
+                role: "Founder",
+                bio: "A former international swimmer who has experienced the highs and lows of competitive sport at the highest level. This unique perspective informs his work as of experience in the field.",
+              },
+            ].map((member, index) => (
+              <div key={index} className="group">
+                <div className="relative aspect-[4/5] max-w-sm mx-auto border-2 border-black overflow-hidden mb-4">
+                  <Image
+                    src={`/placeholder.svg?height=500&width=400&text=Team Member ${index + 1}`}
+                    alt={`${member.name}`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                </div>
+                <h3 className="font-serif text-2xl font-bold">{member.name}</h3>
+                <p className="text-red-900 uppercase text-xs tracking-widest mb-2">{member.role}</p>
+                <p className="text-gray-700">{member.bio}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* <div className="text-center mt-12">
+            <Button
+              variant="outline"
+              className="border-black text-black hover:bg-black hover:text-white rounded-none uppercase text-xs tracking-widest py-6 px-8"
+            >
+              Join Our Team
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div> */}
+        </div>
+      </section>
+
+      {/* Photo Gallery */}
+      <section className="py-24 border-b border-black">
+        <div className="container mx-auto px-4">
+          <h2 className="font-serif text-4xl font-bold text-black mb-16 text-center">Behind The Scenes</h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
+            {galleryImages.map((item:any, index:any) => (
+              <div
+                key={item._id}
+                className={`group overflow-hidden relative ${index === 0 || index === 5 ? "md:col-span-2 md:row-span-2" : ""}`}
+              >
+                <div className="absolute inset-0 border border-black z-10 pointer-events-none"></div>
+                <div className="relative w-full h-full aspect-square">
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-700"
+                    placeholder="blur"
+                    blurDataURL={item.lqip}
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-sm">{item.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/gallery" className="group">
+              <Button
+                variant="outline"
+                className="border-black text-black hover:bg-black hover:text-white rounded-none uppercase text-xs tracking-widest py-6 px-8"
+              >
+                View Full Gallery
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Animated Statistics
+      <section className="py-24 border-b border-black bg-black text-white">
+        <div className="container mx-auto px-4">
+          <h2 className="font-serif text-4xl font-bold mb-16 text-center">By The Numbers</h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
+                <StatisticCounter end={50} suffix="K+" duration={2} />
+              </p>
+              <p className="uppercase text-xs tracking-widest">Social Followers</p>
+            </div>
+
+            <div className="text-center">
+              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
+                <StatisticCounter end={100} suffix="+" duration={2} />
+              </p>
+              <p className="uppercase text-xs tracking-widest">Videos Created</p>
+            </div>
+
+            <div className="text-center">
+              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
+                <StatisticCounter end={25} suffix="+" duration={2} />
+              </p>
+              <p className="uppercase text-xs tracking-widest">Sports Covered</p>
+            </div>
+
+            <div className="text-center">
+              <p className="font-serif text-5xl md:text-6xl font-bold text-red-900 mb-2">
+                <StatisticCounter end={12} duration={2} />
+              </p>
+              <p className="uppercase text-xs tracking-widest">Team Members</p>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* Interactive Timeline */}
+      {/* <section className="py-24 border-b border-black">
+        <div className="container mx-auto px-4">
+          <h2 className="font-serif text-4xl font-bold text-black mb-16 text-center">Our Journey</h2>
+
+          <div className="relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-black"></div>
+
+            {[
+              {
+                year: 2023,
+                milestone: "First Instagram post reached 10,000 likes",
+                description: "Founded with a vision to transform sports media",
+              },
+              {
+                year: 2024,
+                milestone: "Surpassed 50,000 YouTube subscribers",
+                description: "Expanded our social media presence across platforms",
+              },
+              {
+                year: 2025,
+                milestone: "Preparing for our first major event coverage",
+                description: "Launching our comprehensive coverage of major sporting events",
+              },
+            ].map((item, index) => (
+              <div
+                key={item.year}
+                className={`flex items-center mb-16 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
+              >
+                <div className={`w-1/2 ${index % 2 === 0 ? "pr-12 text-right" : "pl-12"}`}>
+                  <h3 className="font-serif text-3xl font-bold mb-2">{item.year}</h3>
+                  <p className="text-gray-700">{item.description}</p>
+                </div>
+
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-900 rounded-full border-4 border-white"></div>
+
+                <div className={`w-1/2 ${index % 2 === 0 ? "pl-12" : "pr-12 text-right"}`}>
+                  <p className="text-sm uppercase tracking-widest text-red-900 mb-2">MILESTONE</p>
+                  <p className="font-medium">{item.milestone}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* Testimonials Carousel */}
+      {/* <section className="py-24 border-b border-black">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="font-serif text-4xl font-bold text-black mb-16 text-center">What People Are Saying</h2>
+
+          <TestimonialCarousel
+            testimonials={[
+              {
+                quote:
+                  "The Winning Story brings a fresh perspective to sports coverage. Their visual storytelling is unmatched in the industry.",
+                author: "Sports Media Weekly",
+              },
+              {
+                quote:
+                  "A breath of fresh air in sports media. Their attention to detail and storytelling approach sets them apart from traditional outlets.",
+                author: "Digital Content Awards",
+              },
+              {
+                quote:
+                  "The team at The Winning Story has created something special. Their content captures the emotion and drama of sports in a way few others can.",
+                author: "Pro Athlete Magazine",
+              },
+            ]}
+          />
+        </div>
+      </section> */}
+
+      
 
       {/* Contact/Newsletter */}
       <section className="py-24 border-b border-black">

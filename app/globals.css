@@ -57,3 +57,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes fadeToLow {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.1;
+  }
+}
