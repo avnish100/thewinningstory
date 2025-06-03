@@ -159,30 +159,21 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos }: HomePa
                 target="_blank"
                 className="text-xs uppercase tracking-widest font-medium text-red-900 hover:text-black flex items-center"
               >
-                @thewinningstorypub
+                @thewinningstory
                 <ExternalLink className="ml-2 h-4 w-4" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((item) => (
-                <Link
-                  href="https://instagram.com"
-                  target="_blank"
-                  key={item}
-                  className="group relative aspect-square overflow-hidden border border-black"
-                >
-                  <Image
-                    src={`/placeholder.svg?height=500&width=500&text=Instagram ${item}`}
-                    alt={`Instagram post ${item}`}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                    <Instagram className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-8 w-8" />
-                  </div>
-                </Link>
-              ))}
+            {/* Replace the grid with LightWidget */}
+            <div className="w-full">
+              <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+              <iframe 
+                src="//lightwidget.com/widgets/0a4e0f22812a57f6b976a95512d71af9.html" 
+                scrolling="no" 
+                allowTransparency={true} 
+                className="lightwidget-widget" 
+                style={{width: '100%', border: 0, overflow: 'hidden'}}
+              ></iframe>
             </div>
 
             <div className="text-center mt-8">
