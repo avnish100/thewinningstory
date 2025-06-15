@@ -1,12 +1,13 @@
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { client } from "@/sanity/lib/client"
 import { galleryImagesQuery } from "@/sanity/lib/queries"
-import { urlFor } from "@/sanity/lib/image"
-
-export const revalidate = 60 // revalidate this page every 60 seconds
+import GalleryFilter from "@/components/gallery-filter"
+import GalleryItem from "@/components/gallery-item"
+import GalleryContent from "@/components/gallery-content"
+import { useState } from "react"
+// revalidate this page every 60 seconds
 
 interface GalleryImage {
   _id: string
@@ -20,60 +21,38 @@ interface GalleryImage {
   order: number
 }
 
+// Main page component (server component)
 export default async function GalleryPage() {
   const galleryItems = await client.fetch<GalleryImage[]>(galleryImagesQuery)
+  const categories = Array.from(new Set(galleryItems.map((item) => item.category)))
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-12">
-        {/* Back Button */}
-        <Link href="/" className="inline-block mb-12">
-          <Button
-            variant="outline"
-            className="border-black text-black hover:bg-black hover:text-white rounded-none uppercase text-xs tracking-widest"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
+    <div className="min-h-screen bg-zinc-50">
+      <div className="container mx-auto px-4 py-16">
+        {/* Navigation */}
+        <div className="flex justify-between items-center mb-16">
+          <Link href="/" className="inline-block">
+            <Button
+              variant="outline"
+              className="border-zinc-800 text-zinc-800 hover:bg-zinc-800 hover:text-white transition-colors duration-300"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
 
         {/* Gallery Header */}
-        <h1 className="font-serif text-4xl md:text-5xl font-bold text-black mb-8">Photo Gallery</h1>
-        <p className="text-gray-700 mb-12 max-w-2xl">
-          Take a look behind the scenes at The Winning Story. Our gallery showcases the moments that make sports
-          storytelling special.
-        </p>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {galleryItems.map((item) => (
-            <div key={item._id} className="group">
-              <div className="relative aspect-[4/3] overflow-hidden border-2 border-black">
-                <Image
-                  src={item.imageUrl}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  placeholder="blur"
-                  blurDataURL={item.lqip}
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              </div>
-              <div className="mt-4">
-                <p className="text-xs uppercase tracking-widest text-red-900 mb-1">{item.category}</p>
-                <h3 className="font-serif text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-700 text-sm">{item.caption}</p>
-                <p className="text-sm text-gray-500 mt-2">
-                  {new Date(item.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="max-w-3xl mb-16">
+          <h1 className="font-serif text-5xl md:text-6xl font-bold text-zinc-900 mb-6">Behind the Lens</h1>
+          <p className="text-zinc-600 text-lg md:text-xl leading-relaxed">
+            Take a look behind the scenes at The Winning Story. Our gallery showcases the moments that make sports
+            storytelling special — capturing the emotion, dedication, and triumph that define athletic excellence.
+          </p>
         </div>
+
+        {/* Gallery Content */}
+        <GalleryContent items={galleryItems} categories={categories} />
       </div>
     </div>
   )

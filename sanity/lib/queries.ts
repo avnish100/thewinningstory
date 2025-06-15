@@ -62,3 +62,30 @@ export const pressReleaseBySlugQuery = groq`*[_type == "pressRelease" && slug.cu
   "coverImageUrl": coverImage.asset->url,
   "lqip": coverImage.asset->metadata.lqip
 }`
+
+export const foundersQuery = `*[_type == "founders"][0] {
+  founder1 {
+    image {
+      asset-> {
+        url
+      }
+    },
+    description
+  },
+  founder2 {
+    image {
+      asset-> {
+        url
+      }
+    },
+    description
+  }
+}`
+
+export const storyImageQuery = `*[_type == "storyImage"][0]{
+  image{
+    asset->{
+      url
+    }
+  }
+}`
