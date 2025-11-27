@@ -55,8 +55,8 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos, founders
       backgroundRepeat: 'no-repeat',
       backgroundAttachment: 'fixed', // Creates parallax effect but can impact performance on mobile
       // Alternative: remove backgroundAttachment for better mobile performance
-      opacity: 0,
-      animation: 'fadeToLow 1.5s ease-out forwards',
+      opacity: 0.3,
+      // animation: 'fadeToLow 1.5s ease-out forwards',
       willChange: 'auto',
       contain: 'layout style paint',
       transform: 'translate3d(0, 0, 0)',
@@ -66,41 +66,41 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos, founders
 
   <div className="container mx-auto px-4 z-10 text-center relative">
     <h1 
-      className="font-serif text-6xl md:text-8xl font-bold text-black tracking-tight mb-6 opacity-0 transform translate-y-8 animate-[fadeSlideUp_0.8s_ease-out_forwards]"
-      style={{
-        animationDelay: '0.2s',
-        transform: 'translate3d(0, 0, 0)',
-      }}
+      className="font-serif text-6xl md:text-8xl font-bold text-black tracking-tight mb-8 transform"
+      // style={{
+      //   animationDelay: '0.2s',
+      //   transform: 'translate3d(0, 0, 0)',
+      // }}
     >
       THE WINNING STORY
     </h1>
     <p 
-      className="text-sm uppercase tracking-[0.3em] mb-8 text-gray-900 opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]"
-      style={{ 
-        animationDelay: '0.6s',
-        transform: 'translate3d(0, 0, 0)',
-      }}
+      className="text-sm uppercase tracking-[0.3em] mb-8 text-gray-908 "
+      // style={{ 
+      //   animationDelay: '0.6s',
+      //   transform: 'translate3d(0, 0, 0)',
+      // }}
     >
-      SPORTS • CULTURE • VICTORY
+      Sports with a twist
     </p>
 
     <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
-      <Link href="/story" className="group opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]" style={{ animationDelay: '0.8s' }}>
+      <Link href="/story" className="group opacity-1">
         <Button
           variant="outline"
           className="border-black text-black hover:bg-black hover:text-white rounded-none uppercase text-xs tracking-widest py-6 px-8 transition-all duration-300"
-          style={{ transform: 'translate3d(0, 0, 0)' }}
+          // style={{ transform: 'translate3d(0, 0, 0)' }}
         >
           Our Story
           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Button>
       </Link>
-      <Link href={instagramUrl} className="group opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]" style={{ animationDelay: '1s' }}>
+      <Link href="/about" className="group opacity-1">
         <Button 
           className="bg-red-900 hover:bg-black text-white rounded-none uppercase text-xs tracking-widest py-6 px-8 transition-all duration-300"
-          style={{ transform: 'translate3d(0, 0, 0)' }}
+          // style={{ transform: 'translate3d(0, 0, 0)' }}
         >
-          Follow Us
+          About Us
           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Button>
       </Link>
@@ -125,7 +125,7 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos, founders
       {/* Social Media Section */}
       <section id="social" className="py-24 border-b border-black">
         <div className="container mx-auto px-4">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-black mb-16 text-center">Follow Our Journey</h2>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-black mb-16 text-center">Our Latest Videos</h2>
 
           {/* YouTube */}
           <div>
@@ -134,14 +134,6 @@ export function HomePage({ pressReleases, galleryImages, youtubeVideos, founders
                 <Youtube className="h-6 w-6 mr-3 text-black" />
                 <h3 className="font-serif text-2xl font-bold">YouTube</h3>
               </div>
-              <Link
-                href={youtubeUrl}
-                target="_blank"
-                className="text-xs uppercase tracking-widest font-medium text-red-900 hover:text-black flex items-center"
-              >
-                The Winning Story
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Link>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">

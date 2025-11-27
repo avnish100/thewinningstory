@@ -59,13 +59,13 @@ export default async function StoryPage() {
             </div>
 
             <div className="relative">
-              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-red-100 rounded-full blur-3xl opacity-50"></div>
-              <div className="relative border-2 border-black p-3 bg-white rotate-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:rotate-0 hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] max-w-[500px] mx-auto">
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-red-100 rounded-full blur-3xl opacity-50"></div>
+              <div className="relative border-2 border-black p-3 bg-white rotate-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:rotate-0 hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] max-w-[400px] mx-auto">
                 <Image
                   src={storyImage?.image?.asset?.url || "/placeholder.svg?height=400&width=500"}
                   alt="About The Winning Story"
-                  width={500}
-                  height={400}
+                  width={250}
+                  height={200}
                   className="w-full h-auto"
                 />
               </div>
