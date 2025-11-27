@@ -38,18 +38,22 @@ export default async function StoryPage() {
                 Our Publication
               </h1>
               <div className="space-y-6 text-gray-700">
-                <p className="text-lg">
-                  The Winning Story is a premium sports media publication dedicated to capturing the essence of victory,
-                  the spirit of competition, and the culture surrounding sports.
+                <p>
+                  <i>"It's not going to work out",</i> Atharv said as a debate struck over the coffee table. I was confused watching them argue because they'd spent the last 6 hours bringing "The Winning Story" to life
                 </p>
                 <p>
-                  Founded in 2023, we bring a unique perspective to sports coverage, focusing on the narratives that
-                  define athletes, teams, and moments that transcend the game itself.
+                  They argued over how the two full-time jobs would overshadow this, because after all we all know how many people are forced to give up their passion to join the "Race". Well let's not get into it. I barked reminding them that I was a part of the conversation too. And somehow that mellowed the mood. <i>"Atharv you have given 14 years of ypur life to sport. When we were learning to walk you had already dived into the pool - not knowing where it would take you. And now, look at how things have worked out,"</i> Shriya said
                 </p>
                 <p>
-                  Our mission is to deliver compelling visual storytelling that celebrates the triumph, struggle, and
-                  beauty of sports through stunning photography, immersive videos, and thoughtful commentary.
+                  <i>"Remember the sleepless nights or every time you bailed on your friends to make your 4 year old self proud"</i> I ran towards Atharv, scratching my paw near his leg. He just nodded and smiled. Looking across the room he said , <i>"Shriya I agree, I mean even your love for sport was unparalleled. When you were 11 you had found your calling. The world of sports was where you belonged. It is all you have known and nothing makes you happier".</i>
                 </p>
+                <p>Shriya just smiled. As the silence grew, I glared at them and said, 
+                <em>“So can we take the leap of faith?”</em> And like two idiots who deeply loved sports—they said yes.
+
+                You see, it’s not always you who should give up on your passion. Yes, you might have to fight through countless barrels, but in the end—the whole is what matters.
+
+                That is why they say, life can be unpredictable at times. You fear opening some doors thinking you might fail, but sometimes those doors might open to exactly where you want to be.</p>
+
               </div>
 
               <div className="mt-12 flex items-center">
